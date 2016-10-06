@@ -23,5 +23,5 @@ galaxy_info:
 dependencies:
   - role: andrewrothstein.supervisord
     version: v1.0.4
-  - roles: andrewrothstein.sshd
+  - role: andrewrothstein.sshd
     version: v1.0.1
