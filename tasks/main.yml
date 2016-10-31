@@ -4,5 +4,5 @@
   become_user: '{{supervisord_program_username}}'
   template: >-
     src=simple-program.conf.j2
-    dest=/etc/supervisord/conf.f/{{supervisord_program_name}}.conf
+    dest=/etc/supervisord/conf.d/{{supervisord_program_name}}.conf
     mode=0644
