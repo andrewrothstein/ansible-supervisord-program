@@ -1,4 +1,4 @@
-[program:{{program-name]
+[program:{{supervisord_program_name}}]
 
-command=/bin/launch-my-daemon
-autorestart=true
+command={{supervisord_program_command}}
+autorestart={{supervisord_program_autorestart|to_json}}
