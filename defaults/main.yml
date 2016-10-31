@@ -1,2 +1,5 @@
 ---
-# defaults file for sshd-supervisord
+supervisord_program_username: root
+# supervisord_program_name: example
+# supervisord_program_command: /bin/example -d {{magical_var}}
+# supervisord_program_autorestart: true
