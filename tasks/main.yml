@@ -1,8 +1,16 @@
 ---
+- name: mkdir supervisord_conf_dir
+  become: yes
+  become_user: '{{supervisord_program_username}}'
+  file: >-
+    path={{supervisord_conf_dir}}
+    state=directory
+    mode=0755
+
 - name: install program definition
   become: yes
   become_user: '{{supervisord_program_username}}'
   template: >-
     src=simple-program.conf.j2
-    dest=/etc/supervisord/conf.d/{{supervisord_program_name}}.conf
+    dest={{supervisord_conf_dir}}/{{supervisord_program_name}}.conf
     mode=0644
