@@ -1,31 +1,31 @@
-andrewrothstein.sshd-supervisord
+andrewrothstein.supervisord-program
 =========
 
-Installs a program specification for sshd
+Template role for installing a program within supervisord
 
 Requirements
 ------------
 
-See [meta/main.yml]
+See (meta/main.yml)[meta/main.yml]
 
 Role Variables
 --------------
 
-See [defaults/main.yml]
+See (defaults/main.yml)[defaults/main.yml]
 
 Dependencies
 ------------
 
-See [meta/main.yml]
+See (meta/main.yml)[meta/main.yml]
 
 Example Playbook
 ----------------
 
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
+Derivations of this role should be instanced.
 
     - hosts: servers
       roles:
-         - andrewrothstein.sshd-supervisord
+         - andrewrothstein.emacs-daemon-supervisord
 
 License
 -------
