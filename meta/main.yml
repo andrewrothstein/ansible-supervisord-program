@@ -1,7 +1,7 @@
 ---
 galaxy_info:
   author: Andrew Rothstein
-  description: installs supervisord conf for sshd
+  description: abstract role to install a programs supervisord configuration
   company: BlackRock
   license:
     - MIT
@@ -12,16 +12,14 @@ galaxy_info:
         - 7
     - name: Fedora
       versions:
-        - 23
+        - 24
     - name: Ubuntu
       versions:
-        - trusty
         - xenial
   galaxy_tags:
-    - development
+    - process
+    - supervision
 
 dependencies:
   - role: andrewrothstein.supervisord
     version: v1.0.5
-  - role: andrewrothstein.sshd
-    version: v1.0.1
