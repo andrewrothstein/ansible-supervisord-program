@@ -20,6 +20,10 @@ galaxy_info:
     - process
     - supervision
 
+# reminder: binary application installation should be specified at the dervied level
+# best practice:
+#   - separate application binary from application configuration
+#   - version both independently
 dependencies:
   - role: andrewrothstein.supervisord
     version: v1.0.5
