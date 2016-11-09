@@ -9,21 +9,18 @@ galaxy_info:
   platforms:
     - name: EL
       versions:
-        - 7
+        - all
     - name: Fedora
       versions:
-        - 24
+        - all
     - name: Ubuntu
       versions:
-        - xenial
+        - all
   galaxy_tags:
-    - process
-    - supervision
+    - supervisiord
 
 # reminder: binary application installation should be specified at the dervied level
 # best practice:
 #   - separate application binary from application configuration
 #   - version both independently
-dependencies:
-  - role: andrewrothstein.supervisord
-    version: v1.0.5
+dependencies: []
