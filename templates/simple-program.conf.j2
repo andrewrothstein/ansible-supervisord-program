@@ -1,5 +1,5 @@
 [program:{{supervisord_program_name}}]
 
-user={{supervisord_program_username}}
+user={{supervisord_program_username | default('root')}}
 command={{supervisord_program_command}}
 autorestart={{supervisord_program_autorestart|default(true)|to_json}}
