@@ -1,6 +1,6 @@
 [program:{{supervisord_program_name}}]
 
-environment=HTTP_PROXY=%(ENV_HTTP_PROXY)s,HTTPS_PROXY=%(ENV_HTTPS_PROXY)s,NO_PROXY=%(ENV_NO_PROXY)s{% for k, v in supervisord_program_env.iteritems() %},{{k}}={{v | to_json}}{% endfor %}
+environment=HTTP_PROXY=%(ENV_HTTP_PROXY)s,HTTPS_PROXY=%(ENV_HTTPS_PROXY)s,NO_PROXY=%(ENV_NO_PROXY)s{% if supervisord_program_env is defined %}{% for k, v in supervisord_program_env.iteritems() %},{{k}}={{v | to_json}}{% endfor %}{% endif %}
 user={{supervisord_program_username | default('root')}}
 command={{supervisord_program_command}}
 autorestart={{supervisord_program_autorestart|default(true)|to_json}}
