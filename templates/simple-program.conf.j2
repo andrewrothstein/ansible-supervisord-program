@@ -1,7 +1,7 @@
 [program:{{supervisord_program_name}}]
 
 {% if supervisord_program_env is defined %}
-environment={% for k, v in supervisord_program_env.iteritems() %}{{k}}={{v | to_json}}{% if no loop.last %},{% endif %}{% endfor %}
+environment={% for k, v in supervisord_program_env.iteritems() %}{{k}}={{v | to_json}}{% if not loop.last %},{% endif %}{% endfor %}
 {% endif %}
 
 user={{supervisord_program_username | default('root')}}
