@@ -2,3 +2,24 @@
 - hosts: all
   roles:
     - role: '{{playbook_dir}}'
+      supervisord_program_name: supervisord-program-test-1
+      supervisord_program_command: echo test 1
+      supervisord_stopasgroup: False
+    - role: '{{playbook_dir}}'
+      supervisord_program_name: supervisord-program-test-2
+      supervisord_program_command: echo test 2
+      supervisord_program_user: nobody
+    - role: '{{playbook_dir}}'
+      supervisord_program_name: supervisord-program-test-3
+      supervisord_program_command: echo test 3
+      supervisord_program_env:
+        FOO: BAR
+        BING: BAZ
+    - role: '{{playbook_dir}}'
+      supervisord_program_name: supervisord-program-test-4
+      supervisord_program_command: echo test 4
+      supervisord_program_addl_settings:
+        stopwaitsecs: 30
+        startretries: 6
+
+

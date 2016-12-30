@@ -1,5 +1,6 @@
 ---
 supervisord_conf_dir: /etc/supervisor/conf.d
+supervisord_program_addl_settings: []
 #supervisord_program_env:
 #  KEY1: VALUE1
 #  KEY2: VALUE2
@@ -7,3 +8,8 @@ supervisord_conf_dir: /etc/supervisor/conf.d
 # supervisord_program_name: example
 # supervisord_program_command: /bin/example -d {{magical_var}}
 # supervisord_program_autorestart: true
+# supervisord_program_stopasgroup: true
+# supervisord_program_addl_settings:
+#   killasgroup: true
+#   stopsignal: HUP
+  

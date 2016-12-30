@@ -7,3 +7,8 @@ environment={% for k, v in supervisord_program_env.iteritems() %}{{k}}={{v | to_
 user={{supervisord_program_username | default('root')}}
 command={{supervisord_program_command}}
 autorestart={{supervisord_program_autorestart|default(true)|to_json}}
+stopasgroup={{supervisord_stopasgroup|default(true)|to_json}}
+
+{% for k,v in supervisord_program_addl_settings.iteritems() %}
+{{k}}={{v}}
+{% endfor %}
