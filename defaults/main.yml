@@ -1,6 +1,6 @@
 ---
 supervisord_conf_dir: /etc/supervisor/conf.d
-supervisord_program_addl_settings: []
+supervisord_program_addl_settings: {}
 #supervisord_program_env:
 #  KEY1: VALUE1
 #  KEY2: VALUE2
