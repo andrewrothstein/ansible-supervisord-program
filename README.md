@@ -1,6 +1,6 @@
-[![Build Status](https://travis-ci.org/andrewrothstein/ansible-supervisord-program.svg?branch=master)](https://travis-ci.org/andrewrothstein/ansible-supervisord-program)
 andrewrothstein.supervisord-program
 =========
+[![Build Status](https://travis-ci.org/andrewrothstein/ansible-supervisord-program.svg?branch=master)](https://travis-ci.org/andrewrothstein/ansible-supervisord-program)
 
 Template role for installing a program within supervisord
 
