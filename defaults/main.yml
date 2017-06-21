@@ -16,4 +16,4 @@ supervisord_program_addl_settings: {}
 
 
 #uncomment below  variable to enable log redirection
-#redirect_flag: true s
+#supervisord_program_redirect_flag: true 

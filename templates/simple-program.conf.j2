@@ -8,7 +8,7 @@ user={{supervisord_program_username | default('root')}}
 command={{supervisord_program_command}}
 autorestart={{supervisord_program_autorestart|default(true)|to_json}}
 stopasgroup={{supervisord_stopasgroup|default(true)|to_json}}
-{% if redirect_flag is defined %}
+{% if supervisord_program_redirect_flag is defined %}
 redirect_stderr=true
 (% endif %)
 
