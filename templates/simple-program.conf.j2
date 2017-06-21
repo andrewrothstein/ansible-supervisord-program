@@ -9,7 +9,7 @@ command={{supervisord_program_command}}
 autorestart={{supervisord_program_autorestart|default(true)|to_json}}
 stopasgroup={{supervisord_stopasgroup|default(true)|to_json}}
 {% if supervisord_program_redirect_flag is defined %}
-redirect_stderr=true
+redirect_stderr=supervisord_program_redirect_flag
 (% endif %)
 
 {% for k,v in supervisord_program_addl_settings.iteritems() %}
