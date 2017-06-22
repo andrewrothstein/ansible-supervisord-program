@@ -21,5 +21,3 @@
       supervisord_program_addl_settings:
         stopwaitsecs: 30
         startretries: 6
-
-
