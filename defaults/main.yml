@@ -12,4 +12,8 @@ supervisord_program_addl_settings: {}
 # supervisord_program_addl_settings:
 #   killasgroup: true
 #   stopsignal: HUP
-  
+
+
+
+#uncomment below  variable to enable log redirection
+#supervisord_program_redirect_flag: true 
