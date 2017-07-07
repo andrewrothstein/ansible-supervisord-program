@@ -21,3 +21,14 @@
       supervisord_program_addl_settings:
         stopwaitsecs: 30
         startretries: 6
+    - role: '{{playbook_dir}}'
+      supervisord_program_name: supervisord-program-test-5
+      supervisord_program_command: echo test 5
+      supervisord_program_stdout_logfile: /tmp/supervisord-program-test-5-stdout.log
+      supervisord_program_stderr_logfile: /tmp/supervisord-program-test-5-stderr.log
+      supervisord_program_stdout_logfile_maxbytes: 0
+      supervisord_program_stderr_logfile_maxbytes: 0
+    - role: '{{playbook_dir}}'
+      supervisord_program_name: supervisord-program-test-6
+      supervisord_program_command: echo test 6
+      supervisord_program_redirect_stderr: true

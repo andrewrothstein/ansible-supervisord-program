@@ -1,7 +1,7 @@
 ---
 supervisord_conf_dir: /etc/supervisor/conf.d
 supervisord_program_addl_settings: {}
-#supervisord_program_env:
+# supervisord_program_env:
 #  KEY1: VALUE1
 #  KEY2: VALUE2
 # supervisord_program_username: root
@@ -13,7 +13,21 @@ supervisord_program_addl_settings: {}
 #   killasgroup: true
 #   stopsignal: HUP
 
+# Redirect supervisord_program's stderr output to be sent back to supervisord on its stdout
+# supervisord_program_redirect_stderr: false
 
+# Use the options below to edit log location for supervisord_program. If set to AUTO, supervisor will automatically choose a file location.
+# If this is set to NONE, supervisord will create no log file. Default value is AUTO.
+# AUTO log files and their backups will be deleted when supervisord restarts.
 
-#uncomment below  variable to enable log redirection
-#supervisord_program_redirect_flag: true
+# Put supervisord_program's stdout output in this file (and if supervisord_program_redirect_stderr is true, also place stderr output in this file)
+# supervisord_program_stdout_logfile: /example/program_stdout.log
+
+# Put process stderr output in this file unless supervisord_program_redirect_stderr is true
+# supervisord_program_stderr_logfile: /example/program_stderr.log
+
+# The maximum number of bytes that may be consumed by supervisord_program_stdout_logfile before it is rotated (0=unlimited)
+# supervisord_program_stdout_logfile_maxbytes: 50MB
+
+# The maximum number of bytes that may be consumed by supervisord_program_stderr_logfile before it is rotated (0=unlimited)
+# supervisord_program_stderr_logfile_maxbytes: 50MB
