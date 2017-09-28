@@ -6,12 +6,10 @@ environment={% for k, v in supervisord_program_env.iteritems() %}{{k}}={{v | to_
 
 user={{supervisord_program_username | default('root')}}
 command={{supervisord_program_command}}
-autorestart={{supervisord_program_autorestart|default(true)}}
-stopasgroup={{supervisord_stopasgroup|default(true)|to_json}}
+autorestart={{supervisord_program_autorestart|default(true)|lower}}
+stopasgroup={{supervisord_stopasgroup|default(true)|lower}}
 
-{% if supervisord_program_redirect_stderr is defined %}
-redirect_stderr={{supervisord_program_redirect_stderr}}
-{% endif %}
+redirect_stderr={{supervisord_program_redirect_stderr|default(false)|lower}}
 
 {% if supervisord_program_stdout_logfile is defined %}
 stdout_logfile={{ supervisord_program_stdout_logfile }}
