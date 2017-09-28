@@ -5,18 +5,6 @@
     supervisord_program_name: supervisord-program-test
     supervisord_program_command: echo "Hello World"
   tasks:
-    - name: check if program name is configured correctly in supervisord-program-test.conf
-      block:
-        - include_role:
-            name: '{{playbook_dir}}'
-        - lineinfile:
-            path: '{{supervisord_conf_dir}}/{{supervisord_program_name}}.conf'
-            line: '[program:{{supervisord_program_name}}]'
-            state: present
-          check_mode: yes
-          register: result
-          failed_when: (result | changed) or (result | failed)
-
     - name: check if command is configured correctly in supervisord-program-test.conf
       block:
         - include_role:
