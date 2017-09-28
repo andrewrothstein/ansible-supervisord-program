@@ -19,11 +19,15 @@ galaxy_info:
     - name: Alpine
       versions:
         - all
+    - name: Archlinux
+      versions:
+        - all
     - name: Debian
       versions:
         - jessie
+        - stretch
   galaxy_tags:
-    - supervisiord
+    - supervisord
 
 # reminder: binary application installation should be specified at the dervied level
 # best practice:
