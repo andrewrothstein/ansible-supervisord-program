@@ -107,7 +107,7 @@
 
     - name: check if stdout_logfile is configured correctly in supervisord-program-test.conf
       vars:
-        supervisord_program_stdout_logfile: /tmp/supervisord-program-test-5-stdout.log
+        supervisord_program_stdout_logfile: /tmp/supervisord-program-test-stdout.log
       block:
         - include_role:
             name: '{{playbook_dir}}'
@@ -136,6 +136,7 @@
     - name: check if redirect_stderr is configured correctly in supervisord-program-test.conf
       vars:
         supervisord_program_redirect_stderr: True
+        supervisord_program_stderr_logfile: /tmp/supervisord-program-test-stderr.log
       block:
         - include_role:
             name: '{{playbook_dir}}'
@@ -143,6 +144,13 @@
             path: '{{supervisord_conf_dir}}/{{supervisord_program_name}}.conf'
             line: redirect_stderr=true
             state: present
+          check_mode: yes
+          register: result
+          failed_when: (result | changed) or (result | failed)
+        - lineinfile:
+            path: '{{supervisord_conf_dir}}/{{supervisord_program_name}}.conf'
+            line: stderr_logfile={{supervisord_program_stderr_logfile}}
+            state: absent
           check_mode: yes
           register: result
           failed_when: (result | changed) or (result | failed)
