@@ -1,5 +1,4 @@
 [program:{{supervisord_program_name}}]
-
 {% if supervisord_program_env is defined %}
 environment={% for k, v in supervisord_program_env.iteritems() %}{{k}}={{v | to_json}}{% if not loop.last %},{% endif %}{% endfor %}
 {% endif %}
@@ -8,25 +7,21 @@ user={{supervisord_program_username | default('root')}}
 command={{supervisord_program_command}}
 autorestart={{supervisord_program_autorestart|default(true)|lower}}
 stopasgroup={{supervisord_stopasgroup|default(true)|lower}}
-
 redirect_stderr={{supervisord_program_redirect_stderr|default(false)|lower}}
-
 {% if supervisord_program_stdout_logfile is defined %}
 stdout_logfile={{ supervisord_program_stdout_logfile }}
 {% endif %}
-
-{% if supervisord_program_stderr_logfile is defined %}
+{% if supervisord_program_stderr_logfile is defined
+	and (supervisord_program_redirect_stderr is not defined
+		or not supervisord_program_redirect_stderr) %}
 stderr_logfile={{ supervisord_program_stderr_logfile }}
 {% endif %}
-
 {% if supervisord_program_stdout_logfile_maxbytes is defined %}
 stdout_logfile_maxbytes={{ supervisord_program_stdout_logfile_maxbytes }}
 {% endif %}
-
 {% if supervisord_program_stderr_logfile_maxbytes is defined %}
 stderr_logfile_maxbytes={{ supervisord_program_stderr_logfile_maxbytes }}
 {% endif %}
-
 {% for k,v in supervisord_program_addl_settings.iteritems() %}
 {{k}}={{v}}
 {% endfor %}
