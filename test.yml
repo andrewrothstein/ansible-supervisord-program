@@ -5,152 +5,153 @@
     supervisord_program_name: supervisord-program-test
     supervisord_program_command: echo "Hello World"
   tasks:
-    - name: check if program name is configured correctly in supervisord-program-test.conf
-      block:
+    - block:
         - include_role:
-            name: '{{playbook_dir}}'
-        - lineinfile:
-            path: '{{supervisord_conf_dir}}/{{supervisord_program_name}}.conf'
-            line: '[program:{{supervisord_program_name}}]'
+            name: '{{ playbook_dir }}'
+        - name: check if program name is configured correctly in supervisord-program-test.conf
+          lineinfile:
+            path: '{{ supervisord_conf_dir }}/{{ supervisord_program_name }}.conf'
+            line: '[program:{{ supervisord_program_name }}]'
             state: present
           check_mode: yes
           register: result
-          failed_when: (result | changed) or (result | failed)
+          failed_when: (result is changed) or (result is failed)
 
-    - name: check if command is configured correctly in supervisord-program-test.conf
-      block:
+    - block:
         - include_role:
-            name: '{{playbook_dir}}'
-        - lineinfile:
-            path: '{{supervisord_conf_dir}}/{{supervisord_program_name}}.conf'
-            line: command={{supervisord_program_command}}
+            name: '{{ playbook_dir }}'
+        - name: check if command is configured correctly in supervisord-program-test.conf
+          lineinfile:
+            path: '{{ supervisord_conf_dir }}/{{ supervisord_program_name }}.conf'
+            line: command={{ supervisord_program_command }}
             state: present
           check_mode: yes
           register: result
-          failed_when: (result | changed) or (result | failed)
+          failed_when: (result is changed) or (result is failed)
 
-    - name: check if stopasgroup is configured correctly in supervisord-program-test.conf
-      vars:
+    - vars:
         supervisord_stopasgroup: False
       block:
         - include_role:
-            name: '{{playbook_dir}}'
-        - lineinfile:
-            path: '{{supervisord_conf_dir}}/{{supervisord_program_name}}.conf'
+            name: '{{ playbook_dir }}'
+        - name: check if stopasgroup is configured correctly in supervisord-program-test.conf
+          lineinfile:
+            path: '{{ supervisord_conf_dir }}/{{ supervisord_program_name }}.conf'
             line: stopasgroup=false
             state: present
           check_mode: yes
           register: result
-          failed_when: (result | changed) or (result | failed)
+          failed_when: (result is changed) or (result is failed)
 
-    - name: check if user is configured correctly in supervisord-program-test.conf
-      vars:
+    - vars:
         supervisord_program_username: nobody
       block:
         - include_role:
-            name: '{{playbook_dir}}'
-        - lineinfile:
-            path: '{{supervisord_conf_dir}}/{{supervisord_program_name}}.conf'
-            line: user={{supervisord_program_username}}
+            name: '{{ playbook_dir }}'
+        - name: check if user is configured correctly in supervisord-program-test.conf
+          lineinfile:
+            path: '{{ supervisord_conf_dir }}/{{ supervisord_program_name }}.conf'
+            line: user={{ supervisord_program_username }}
             state: present
           check_mode: yes
           register: result
-          failed_when: (result | changed) or (result | failed)
+          failed_when: (result is changed) or (result is failed)
 
-    - name: check if environment is configured correctly in supervisord-program-test.conf
-      vars:
+    - vars:
         supervisord_program_env:
           FOO: BAR
           BING: BAZ
       block:
         - include_role:
-            name: '{{playbook_dir}}'
-        - lineinfile:
-            path: '{{supervisord_conf_dir}}/{{supervisord_program_name}}.conf'
-            line: environment=BING="BAZ",FOO="BAR"
+            name: '{{ playbook_dir }}'
+        - name: check if environment is configured correctly in supervisord-program-test.conf
+          lineinfile:
+            path: '{{ supervisord_conf_dir }}/{{ supervisord_program_name }}.conf'
+            line: environment=FOO="BAR",BING="BAZ"
             state: present
           check_mode: yes
           register: result
-          failed_when: (result | changed) or (result | failed)
+          failed_when: (result is changed) or (result is failed)
 
-    - name: check if stopwaitsecs is configured correctly in supervisord-program-test.conf
-      vars:
+    - vars:
         supervisord_program_addl_settings:
           stopwaitsecs: 30
           startretries: 6
       block:
         - include_role:
-            name: '{{playbook_dir}}'
-        - lineinfile:
-            path: '{{supervisord_conf_dir}}/{{supervisord_program_name}}.conf'
+            name: '{{ playbook_dir }}'
+        - name: check if stopwaitsecs is configured correctly in supervisord-program-test.conf
+          lineinfile:
+            path: '{{ supervisord_conf_dir }}/{{ supervisord_program_name }}.conf'
             line: stopwaitsecs=30
             state: present
           check_mode: yes
           register: result
-          failed_when: (result | changed) or (result | failed)
+          failed_when: (result is changed) or (result is failed)
 
-    - name: check if startretries is configured correctly in supervisord-program-test.conf
-      vars:
+    - vars:
         supervisord_program_addl_settings:
           stopwaitsecs: 30
           startretries: 6
       block:
         - include_role:
-            name: '{{playbook_dir}}'
-        - lineinfile:
-            path: '{{supervisord_conf_dir}}/{{supervisord_program_name}}.conf'
+            name: '{{ playbook_dir }}'
+        - name: check if startretries is configured correctly in supervisord-program-test.conf
+          lineinfile:
+            path: '{{ supervisord_conf_dir }}/{{ supervisord_program_name }}.conf'
             line: startretries=6
             state: present
           check_mode: yes
           register: result
-          failed_when: (result | changed) or (result | failed)
+          failed_when: (result is changed) or (result is failed)
 
-    - name: check if stdout_logfile is configured correctly in supervisord-program-test.conf
-      vars:
+    - vars:
         supervisord_program_stdout_logfile: /tmp/supervisord-program-test-stdout.log
       block:
         - include_role:
-            name: '{{playbook_dir}}'
-        - lineinfile:
-            path: '{{supervisord_conf_dir}}/{{supervisord_program_name}}.conf'
-            line: stdout_logfile={{supervisord_program_stdout_logfile}}
+            name: '{{ playbook_dir }}'
+        - name: check if stdout_logfile is configured correctly in supervisord-program-test.conf
+          lineinfile:
+            path: '{{ supervisord_conf_dir }}/{{ supervisord_program_name }}.conf'
+            line: stdout_logfile={{ supervisord_program_stdout_logfile }}
             state: present
           check_mode: yes
           register: result
-          failed_when: (result | changed) or (result | failed)
+          failed_when: (result is changed) or (result is failed)
 
-    - name: check if stdout_logfile_maxbytes is configured correctly in supervisord-program-test.conf
-      vars:
+    - vars:
         supervisord_program_stdout_logfile_maxbytes: 0
       block:
         - include_role:
-            name: '{{playbook_dir}}'
-        - lineinfile:
-            path: '{{supervisord_conf_dir}}/{{supervisord_program_name}}.conf'
+            name: '{{ playbook_dir }}'
+        - name: check if stdout_logfile_maxbytes is configured correctly in supervisord-program-test.conf
+          lineinfile:
+            path: '{{ supervisord_conf_dir }}/{{ supervisord_program_name }}.conf'
             line: stdout_logfile_maxbytes=0
             state: present
           check_mode: yes
           register: result
-          failed_when: (result | changed) or (result | failed)
+          failed_when: (result is changed) or (result is failed)
 
-    - name: check if redirect_stderr is configured correctly in supervisord-program-test.conf
-      vars:
+    - vars:
         supervisord_program_redirect_stderr: True
         supervisord_program_stderr_logfile: /tmp/supervisord-program-test-stderr.log
       block:
         - include_role:
-            name: '{{playbook_dir}}'
-        - lineinfile:
-            path: '{{supervisord_conf_dir}}/{{supervisord_program_name}}.conf'
+            name: '{{ playbook_dir }}'
+        - name: check if redirect_stderr is configured correctly in supervisord-program-test.conf
+          lineinfile:
+            path: '{{ supervisord_conf_dir }}/{{ supervisord_program_name }}.conf'
             line: redirect_stderr=true
             state: present
           check_mode: yes
           register: result
-          failed_when: (result | changed) or (result | failed)
-        - lineinfile:
-            path: '{{supervisord_conf_dir}}/{{supervisord_program_name}}.conf'
-            line: stderr_logfile={{supervisord_program_stderr_logfile}}
+          failed_when: (result is changed) or (result is failed)
+        - name: check if stderr_logfile is configured correctly in supervisord-program-test.conf
+          lineinfile:
+            path: '{{ supervisord_conf_dir }}/{{ supervisord_program_name }}.conf'
+            line: stderr_logfile={{ supervisord_program_stderr_logfile }}
             state: absent
           check_mode: yes
           register: result
-          failed_when: (result | changed) or (result | failed)
+          failed_when: (result is changed) or (result is failed)

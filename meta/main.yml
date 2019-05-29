@@ -29,7 +29,7 @@ galaxy_info:
   galaxy_tags:
     - supervisord
 
-# reminder: binary application installation should be specified at the dervied level
+# reminder: binary application installation should be specified at the derived level
 # best practice:
 #   - separate application binary from application configuration
 #   - version both independently
