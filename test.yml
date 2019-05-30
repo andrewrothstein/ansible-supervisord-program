@@ -59,15 +59,15 @@
 
     - vars:
         supervisord_program_env:
-          FOO: BAR
           BING: BAZ
+          FOO: BAR
       block:
         - include_role:
             name: '{{ playbook_dir }}'
         - name: check if environment is configured correctly in supervisord-program-test.conf
           lineinfile:
             path: '{{ supervisord_conf_dir }}/{{ supervisord_program_name }}.conf'
-            line: environment=FOO="BAR",BING="BAZ"
+            line: environment=BING="BAZ",FOO="BAR"
             state: present
           check_mode: yes
           register: result
